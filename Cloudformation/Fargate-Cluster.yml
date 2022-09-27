@@ -156,7 +156,7 @@ Resources:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
       Name: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'TargetGroup']]
-      Port: 80
+      Port: 8081
       Protocol: HTTP
       TargetType: ip
       VpcId: !Ref VPC
