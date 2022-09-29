@@ -181,7 +181,6 @@ Resources:
   # Create an ECS Service and add created Cluster, TaskDefintion, Subnets, TargetGroup and SecurityGroup
   ECSService:
     Type: AWS::ECS::Service
-    DependsOn: LoadBalancerListener
     Properties:
       ServiceName: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'ECSService']]
       Cluster: !Ref Cluster
@@ -196,7 +195,3 @@ Resources:
             - !Ref SubnetB
           SecurityGroups:
             - !Ref ContainerSecurityGroup
-      LoadBalancers:
-        - ContainerName: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'Container']]
-          ContainerPort: !Ref ContainerPort
-          TargetGroupArn: !Ref TargetGroup
