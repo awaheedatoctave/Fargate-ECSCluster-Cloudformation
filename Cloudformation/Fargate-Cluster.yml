@@ -103,7 +103,7 @@ Resources:
       Cpu: 512
       NetworkMode: awsvpc
       RequiresCompatibilities:
-        - 'EC2'
+        - 'ECS'
       TaskRoleArn: !Ref ExecutionRole
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
