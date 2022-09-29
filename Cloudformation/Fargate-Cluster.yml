@@ -112,6 +112,12 @@ Resources:
           PortMappings:
             - ContainerPort: !Ref ContainerPort
               HostPort: !Ref ContainerPort
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-region: us-east-1
+              awslogs-group: myLogGroup
+              awslogs-stream-prefix: ecs
 
   # Creat a security group for load balancer and open port 80 in bound from internet
   LoadBalancerSecurityGroup:
