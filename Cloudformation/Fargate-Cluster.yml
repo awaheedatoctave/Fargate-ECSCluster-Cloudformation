@@ -99,7 +99,7 @@ Resources:
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      NetworkMode: bridge
+      NetworkMode: awsvpc
       RequiresCompatibilities:
         - 'EC2'
       TaskRoleArn: !Ref ExecutionRole
@@ -158,7 +158,7 @@ Resources:
       Name: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'TargetGroup']]
       Port: 80
       Protocol: HTTP
-      TargetType: instance
+      TargetType: ip
       VpcId: !Ref VPC
 
   # Create a LoadBalancerListener and attach the TargetGroup and LoadBalancer
