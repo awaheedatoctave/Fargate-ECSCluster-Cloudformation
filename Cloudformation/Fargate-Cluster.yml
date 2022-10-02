@@ -98,17 +98,17 @@ Resources:
   # Create a TaskDefinition with container details
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
-    Properties: 
-      Memory: 1024
-      Cpu: 512
-      NetworkMode: awsvpc
+    Properties:
+      NetworkMode: bridge
       RequiresCompatibilities:
-        - 'FARGATE'
+        - 'ECS'
       TaskRoleArn: !Ref ExecutionRole
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
         - Name: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'Container']]
           Image: !Ref ImageURI
+          Cpu: 512
+          Memory: 1024
           PortMappings:
             - ContainerPort: !Ref ContainerPort
               HostPort: !Ref ContainerPort
@@ -181,7 +181,7 @@ Resources:
       Cluster: !Ref Cluster
       TaskDefinition: !Ref TaskDefinition
       DesiredCount: 2
-      LaunchType: FARGATE
+      LaunchType: EC2
       NetworkConfiguration: 
         AwsvpcConfiguration:
           AssignPublicIp: ENABLED
