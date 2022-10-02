@@ -87,5 +87,3 @@ Resources:
           Subnets:
             - !Ref SubnetA
             - !Ref SubnetB
-          SecurityGroups:
-            - !Ref ContainerSecurityGroup
