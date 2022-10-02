@@ -101,7 +101,7 @@ Resources:
     Properties:
       NetworkMode: bridge
       RequiresCompatibilities:
-        - 'ECS'
+        - 'EC2'
       TaskRoleArn: !Ref ExecutionRole
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
