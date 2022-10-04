@@ -394,7 +394,7 @@ Resources:
                   - 'logs:PutLogEvents'
                 Resource: '*'
   
-    AutoscalingRole:
+  AutoscalingRole:
     Type: 'AWS::IAM::Role'
     Properties:
       AssumeRolePolicyDocument:
