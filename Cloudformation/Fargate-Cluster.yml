@@ -99,10 +99,6 @@ Resources:
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: !Join 
-        - ''
-        - - !Ref 'AWS::StackName'
-          - '-ecs-demo-app'
       NetworkMode: awsvpc
       RequiresCompatibilities:
         - 'EC2'
@@ -116,17 +112,6 @@ Resources:
           PortMappings:
             - ContainerPort: !Ref ContainerPort
               HostPort: !Ref ContainerPort
-          Essential: false
-          LogConfiguration:
-            LogDriver: awslogs
-            Options:
-              awslogs-group: !Ref CloudwatchLogsGroup
-              awslogs-region: !Ref 'AWS::Region'
-              awslogs-stream-prefix: ecs-demo-app
-          VolumesFrom:
-            - SourceContainer: !Join ['-', [!Ref Stage, !Ref 'AWS::AccountId', 'Container']]
-      Volumes:
-        - Name: my-vol
 
   # Creat a security group for load balancer and open port 80 in bound from internet
   LoadBalancerSecurityGroup:
