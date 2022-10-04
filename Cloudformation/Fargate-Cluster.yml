@@ -11,7 +11,7 @@ Parameters:
 
 Resources:
 
-  # Create an ECS Cluster
+  # Create an ECS Cluster of type EC2
   Cluster:
     Type: AWS::ECS::Cluster
     Properties:
